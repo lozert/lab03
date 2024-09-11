@@ -2,7 +2,7 @@ def bubble_sort(arr):
     n = len(arr)
     for i in range(n):
         for j in range(0, n-i-1):
-            if arr[j] > arr[j+1]:
+            if arr[j] < arr[j+1]:  # Изменено на < для сортировки по убыванию
                 arr[j], arr[j+1] = arr[j+1], arr[j]
     return arr
 
@@ -19,7 +19,7 @@ def main():
             numbers.append(num)
 
         sorted_numbers = bubble_sort(numbers)
-        print("Отсортированные числа:", sorted_numbers)
+        print("Отсортированные числа по убыванию:", sorted_numbers)
 
     except ValueError:
         print("Пожалуйста, введите корректные числа.")
