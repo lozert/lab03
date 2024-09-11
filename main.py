@@ -1,20 +1,28 @@
-import numpy
-from matplotlib import pyplot as plt
+def bubble_sort(arr):
+    n = len(arr)
+    for i in range(n):
+        for j in range(0, n-i-1):
+            if arr[j] > arr[j+1]:
+                arr[j], arr[j+1] = arr[j+1], arr[j]
+    return arr
 
-massiv_fibo = []
-x = []
+def main():
+    try:
+        n = int(input("Введите количество чисел: "))
+        if n <= 0:
+            print("Количество чисел должно быть положительным.")
+            return
 
-def fibonachy(n):
-    if n == 1 or n == 2:
-        return 1
-    return fibonachy(n - 1) + fibonachy(n - 2)
+        numbers = []
+        for i in range(n):
+            num = float(input(f"Введите число {i+1}: "))
+            numbers.append(num)
 
-for i in range(1, 10):
-    massiv_fibo.append(fibonachy(i))
-    x.append(i)
+        sorted_numbers = bubble_sort(numbers)
+        print("Отсортированные числа:", sorted_numbers)
 
-plt.plot(x, massiv_fibo, color='red', marker='o', markersize=7)
-plt.xlabel('Номер Фибоначчи')
-plt.ylabel('Величина числа Фибоначчи')
-plt.show()
-print(massiv_fibo)
+    except ValueError:
+        print("Пожалуйста, введите корректные числа.")
+
+if __name__ == "__main__":
+    main()
